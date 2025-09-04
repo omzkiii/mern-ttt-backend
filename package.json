@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch --clear-screen=false ./src/main.ts"
+    "dev": "tsx watch --clear-screen=false ./src/main.ts",
+    "prod": "node ./dist/main.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
