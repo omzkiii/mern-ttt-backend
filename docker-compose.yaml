@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./backend/:/app
+      - /app/node_modules
+    networks:
+      - mern-ttt
+    depends_on:
+      - db
+  db:
+    image: mongo
+    container_name: db
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mypass
+    networks:
+      - mern-ttt
+    volumes:
+      - mongo_data:/data/db
+volumes:
+  mongo_data:
+networks:
+  mern-ttt:
+    driver: bridge
