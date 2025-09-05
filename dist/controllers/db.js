@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 const url = process.env.DB ?? "";
 const client = new MongoClient(url, {
-    tls: true,
-    tlsAllowInvalidHostnames: true, // Temporary - allows invalid hostnames
+    tls: false,
+    ssl: false,
     serverSelectionTimeoutMS: 30000,
     connectTimeoutMS: 30000,
     socketTimeoutMS: 30000,
