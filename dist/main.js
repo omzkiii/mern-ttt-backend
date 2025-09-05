@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors({
-    origin: process.env.ALLOWED_ORIGIN,
+    origin: true,
     credentials: false,
 }));
 app.get("/getMatches", async (req, res) => {

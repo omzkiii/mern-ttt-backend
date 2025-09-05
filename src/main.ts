@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: process.env.ALLOWED_ORIGIN,
+    origin: true,
     credentials: false,
   }),
 );

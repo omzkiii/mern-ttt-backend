@@ -7,9 +7,6 @@ const url = process.env.DB ?? "";
 const client = new MongoClient(url, {
   tls: false,
   ssl: false,
-  serverSelectionTimeoutMS: 30000,
-  connectTimeoutMS: 30000,
-  socketTimeoutMS: 30000,
 });
 
 export async function connectDB() {
