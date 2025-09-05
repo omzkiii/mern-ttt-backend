@@ -3,7 +3,14 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 const url = process.env.DB ?? "";
-export const client = new MongoClient(url);
+
+const client = new MongoClient(url, {
+  tls: true,
+  tlsAllowInvalidHostnames: true, // Temporary - allows invalid hostnames
+  serverSelectionTimeoutMS: 30000,
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 30000,
+});
 
 export async function connectDB() {
   await client.connect();
